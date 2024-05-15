@@ -1,0 +1,69 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h1>Create Scenario</h1>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="flashes">
+{% for message in messages %}
+<li>{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<form  class='form1', method="POST">
+  {{ form.csrf_token }}
+  <div class="form-group">
+    {{ form.name(class_="form-control", placeholder="Name") }}
+  </div>
+  <div class="form-group">
+    {{ form.description(class_="form-control", placeholder="Description") }}
+  </div>
+  <div class="form-group">
+    {{ form.statamount(class_="form-control", placeholder="Stat Amount") }}
+  </div>
+  <div class="form-check">
+    {{ form.death(class_="form-check-input") }}
+    <label class="form-check-label" for="death">Death</label>
+  </div>
+  <div class="form-check">
+    {{ form.alignment(class_="form-check-input") }}
+    <label class="form-check-label" for="alignment">Alignment</label>
+  </div>
+  <div class="form-check">
+    {{ form.winners(class_="form-check-input") }}
+    <label class="form-check-label" for="winners">Winners</label>
+  </div>
+  <div class="form-check">
+    {{ form.teams(class_="form-check-input") }}
+    <label class="form-check-label" for="teams">Teams</label>
+  </div>
+  <div class="form-check">
+    {{ form.multiseq(class_="form-check-input") }}
+    <label class="form-check-label" for="multiseq">Multi-seq</label>
+  </div>
+  <div class="form-check">
+    {{ form.locations(class_="form-check-input") }}
+    <label class="form-check-label" for="locations">Locations</label>
+  </div>
+  <div class="form-check">
+    {{ form.staff(class_="form-check-input") }}
+    <label class="form-check-label" for="staff">staff</label>
+  </div>
+  <div class="form-check">
+    {{ form.staffstats(class_="form-check-input") }}
+    <label class="form-check-label" for="staffstats">Staff Statamount</label>
+  </div>
+  <div class="form-check">
+    {{ form.staffamount(class_="form-check-input") }}
+    <label class="form-check-label" for="staffamount">Staff Amount</label>
+  </div>
+  <div class="form-check">
+    {{ form.items(class_="form-check-input") }}
+    <label class="form-check-label" for="items">Items</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Scenario</button>
+</form>
+{% endblock %}

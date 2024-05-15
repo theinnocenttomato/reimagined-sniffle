@@ -1,0 +1,11 @@
+{%extends 'main.html'%} 
+{% block content %}
+{% for scenario, username in scenarios %}
+<button class="card" data-id="{{ scenario.id }}">
+  <h1 class="name">{{ scenario.name }}</h1>
+<!--pull sthe author data from the users table by comparing the scenario user id to the user id in user list-->
+  <h2 class="author">{{ username }}</h2>
+  <p class="description">{{ scenario.description }}</p>
+</button>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% block content %}
+<h1>{{ scenario.name }}</h1>
+
+<form action="{{ url_for('edit_scenario_details', scenario_id=scenario.id) }}" method="POST">
+  {% for field in fields %}
+    <div>
+      <label for="{{ field[0] }}">{{ field[0] }}</label>
+      {% if field[1] == 'text' %}
+        <input type="text" id="{{ field[0] }}" name="{{ field[0] }}" value="{{ getattr(scenario, field[0], '') }}">
+      {% else %}
+        <input type="checkbox" id="{{ field[0] }}" name="{{ field[0] }}" {% if getattr(scenario, field[0], False) %}checked{% endif %}>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <input type="submit" value="Save Changes">
+</form>
+{% endblock %}

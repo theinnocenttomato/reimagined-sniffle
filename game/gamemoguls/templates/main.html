@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Game Moguls{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar">
+              {% if current_user.is_authenticated %}
+        <li class="dropdown">
+        <a href="#" class="dropbtn">Hello, {{ current_user.username }}</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('users.profile') }}">Profile</a>
+            <a href="{{ url_for('users.logout') }}">Logout</a>
+          </div>
+        </li>
+      {% else %}
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Account</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('users.login') }}">Login</a>
+            <a href="{{ url_for('users.register') }}">Register</a>
+          </div>
+        </li>
+      {% endif %}
+      <ul>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Create</a>
+          <div class="dropdown-content">
+            <a href="{{url_for('create.create_scenario') }}">Create Scenario</a>
+            <a href="{{url_for('create.create_performer')}}">Create Performer</a>
+            <a href="{{url_for('create.create_location')}}">Create Location</a>
+            <a href="{{url_for('create.create_staff')}}">Create Staff</a>
+            <a href="{{url_for('create.create_team')}}">Create Team</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Edit</a>
+          <div class="dropdown-content">
+            <a href="{{url_for('edit.edit_scenario') }}">Edit Scenario</a>
+            <a href="{{url_for('edit.edit_performer')}}">Edit Performer</a>
+            <a href="{{url_for('edit.edit_location')}}">Edit Location</a>
+            <a href="{{url_for('edit.edit_staff')}}">Edit Staff</a>
+            <a href="{{url_for('edit.edit_team')}}">Edit Team</a>
+          </div>
+        </li>
+        <li class="dropdown">
+	     <a href="#" class="dropbtn">View</a>
+        <div class="dropdown-content">
+          <a href="{{ url_for('view.view_scenarios') }}">Scenario</a>
+          <a href="{{ url_for('view.view_performers') }}">Performer</a>
+          <a href="{{ url_for('view.view_locations') }}">Location</a>
+          <a href="{{ url_for('view.view_staff') }}">Staff</a>
+          <a href="{{ url_for('view.view_teams') }}">Team</a>
+        </div>
+        </li>
+      </div>
+        </li>
+        <a href="/play"><button class="play">Play</button></a>
+
+      </ul>
+    </nav>
+      {% block content %}
+      {% endblock %}
+      <script src="/static/card.js?v=1"></script>
+    <flash class="error_messages">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="flash">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </flash>
+
+  </body>    
+  <footer>
+      <p>&copy;2023 Rasslin'</p>
+    </footer>
+</html>

@@ -1,0 +1,9 @@
+{% extends 'main.html'%}
+{% block content %}
+<h1>{{ scenario.name }}</h1>
+<p><strong>Author:</strong> {{ author.name }}</p>
+<p><strong>Description:</strong> {{ scenario.description }}</p>
+<p><strong>Deaths:</strong>{{scenario.deaths}}</p>
+<p><strong>Rating:</strong>{{scenario.rating}}</p>
+<p><strong>Statamount</strong>{{scenario.statamount}}</p>
+{% endblock %}

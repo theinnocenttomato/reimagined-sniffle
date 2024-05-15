@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h1>Create Performer</h1>
+
+    <form class='form1', method="POST">
+        {{form.csrf_token}}
+        <div class="form-group">
+            {{form.name(class_="form-control", placeholder="Name")}}
+        </div>
+        <div class="form-group">
+            {{form.age(class_="form-control", placeholder="Age")}}
+        </div>
+        <div class="form-group">
+            {{form.pronouns(class_="form-control", placeholder="Pronouns")}}
+        </div>
+        <div class="form-group">
+            {{form.hometown(class_="form-control", placeholder="Hometown")}}
+        </div>
+        <div class="form-group">
+            {{form.alignment(class_="form-control", placeholder="Alignment")}}
+        </div>
+        <div class="form-group">
+            {{form.isactive(class_="form-control", placeholder="Is Active")}}
+        </div>
+        <div class="form-group">
+            {{form.death(class_="form-control", placeholder="Dead")}}
+        </div>
+    </form>
+
+{% endblock %}
